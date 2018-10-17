@@ -1,9 +1,10 @@
 package controllers
 
+import de.htwg.se.twothousandfortyeight.model.gameModel.gameBaseImpl.Game
 import javax.inject._
 import play.api._
 import play.api.mvc._
-import de.htwg.se.twothousandfortyeight.view.wui._
+import views.WebInterface
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -20,6 +21,9 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
    * a path of `/`.
    */
   def index() = Action { implicit request: Request[AnyContent] =>
-    Ok("hello word")
+    val student = "Lucas/Bilal"
+    val game = new Game
+
+    Ok(new WebInterface(student, game).initialize)
   }
 }
