@@ -1,8 +1,11 @@
 @(game:de.htwg.se.twothousandfortyeight.model.gameModel.gameBaseImpl.Game)
 
+@player = @{ "Lucas/Bilal" }
+
 @main("2048") {
     <div class="gamecontainer">
         <div class="game">
+            @{ "Hello " + player + ".\nUsed W A S D to move and R to reset and T to exit and Z to save and U to load and Q to undo.\n\n" }
             @{ game.grid.toString + "\n" + "Your Score: " + game.score.toString + "\n\n" }
         </div>
     </div>

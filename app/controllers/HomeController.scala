@@ -13,10 +13,10 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def start() = Action {
-    Ok(views.html.main(views.html.action(game)))
+    Ok(views.html.game(game))
   }
 
   def action(input: Char) = Action {
-    Ok(views.html.action(game))
+    Ok(views.html.game(game))
   }
 }

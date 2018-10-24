@@ -1,16 +1,14 @@
-@(content: Html)
-
-@player = @{ "Lucas/Bilal" }
+@(title: String)(content: Html)
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <div class="start">
-            @{ "Hello " + player + ". Game started!\nUsed W A S D to move and R to reset and T to exit and Z to save and U to load and Q to undo.\n\n" }
-        </div>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
     </head>
     <body>
         @content
-        <script src="@routes.Assets.versioned(" javascripts/main.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("javascripts/main.js")" type="text/javascript"></script>
     </body>
 </html>
