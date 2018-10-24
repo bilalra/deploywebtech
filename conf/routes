@@ -5,6 +5,7 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
+GET     /start                      controllers.HomeController.start
 GET     /action/:input              controllers.HomeController.action(input: Char)
 
 # Map static resources from the /public folder to the /assets URL path

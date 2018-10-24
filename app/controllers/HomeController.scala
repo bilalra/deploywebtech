@@ -12,7 +12,11 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   val game = new Game
   val webInterface = new WebInterface(student, game)
 
-  def index() = Action { // implicit request: Request[AnyContent] =>
+  def index() = Action {
+    Ok(views.html.index())
+  }
+
+  def start() = Action {
     Ok(webInterface.initialize)
   }
 
