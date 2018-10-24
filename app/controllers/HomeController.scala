@@ -2,9 +2,7 @@ package controllers
 
 import de.htwg.se.twothousandfortyeight.model.gameModel.gameBaseImpl.Game
 import javax.inject._
-import play.api._
 import play.api.mvc._
-import views.WebInterface
 
 @Singleton
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
@@ -15,10 +13,10 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def start() = Action {
-    Ok(views.html.action(game)) // Here load main
+    Ok(views.html.main(views.html.action(game)))
   }
 
   def action(input: Char) = Action {
-    Ok(views.html.action(game)) // here action
+    Ok(views.html.action(game))
   }
 }

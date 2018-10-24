@@ -1,6 +1,6 @@
 package views
 
-
+// TODO: Delete when moved
 import de.htwg.se.twothousandfortyeight.controller.Turn
 import de.htwg.se.twothousandfortyeight.model.gameModel.GameTrait
 import de.htwg.se.twothousandfortyeight.util.Utils
