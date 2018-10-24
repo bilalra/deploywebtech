@@ -5,11 +5,11 @@ import de.htwg.se.twothousandfortyeight.controller.Turn
 import de.htwg.se.twothousandfortyeight.model.gameModel.GameTrait
 import de.htwg.se.twothousandfortyeight.util.Utils
 
-// TODO: Move this code to twothousandfourtyeight.scala.html
 class WebInterface(player: String, game: GameTrait) {
+  // TODO: Move this code to main.scala.html as general header
   val initialize = "Hello " + player + ". Game started!\nUsed W A S D to move and R to reset and T to exit and Z to save and U to load and Q to undo.\n\n" + game.grid.toString + "\n" + "Your Score: " + game.score.toString + "\n\n"
 
-  def action(input: Char): String = {
+  def action(input: Char): String = { // TODO: Move this code to twothousandfourtyeight.scala.html
     Turn.makeTurn(game, Utils.processKey(0, input), Math.random(), Math.random())
 
     if (game.win) {
