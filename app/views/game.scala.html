@@ -9,7 +9,7 @@
         @if(game.win) {
             <div class="won">
                 @{ "GAME WON!" }
-            </div>f
+            </div>
         } else if(game.lose) {
             <div class="lost">
                 @{ "GAME OVER!" }
@@ -22,15 +22,17 @@
 
             <br>
 
-            @for(i <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
-                <div class="grid">
-                    @for(j <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
-                        <span class="tile">
-                            @{ game.grid.getSingleLine(i)(j) }
-                        </span>
-                    }
-                </div>
-            }
+            <div class="grid">
+                @for(i <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
+                    <div class="row">
+                        @for(j <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
+                            <span class="tile">
+                                @{ game.grid.getSingleLine(i)(j) }
+                            </span>
+                        }
+                    </div>
+                }
+            </div>
 
             <br>
 
