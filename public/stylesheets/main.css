@@ -1,3 +1,7 @@
+body {
+background-color: gray;
+}
+
 h1 {
     color: #8A0808;
     font-family: "Arial";
@@ -16,23 +20,23 @@ p {
     font-family: "Arial";
     color: green;
     text-align: center;
-    font-size: 100px;
+    font-size: 140px;
 }
 
 .lost {
     font-family: "Arial";
     color: red;
     text-align: center;
-    font-size: 100px;
+    font-size: 140px;
 }
 
 .intro {
     font-family: "Arial";
+    font-size: 20px;
     text-align: center;
 }
 
 .grid {
-    font-family: "Arial";
     text-align: center;
 }
 
@@ -49,12 +53,13 @@ p {
     width: 1.2em;
     height: 1.2em;
     background-color: red;
-    font-size: 30px;
-    margin: 2px;
+    font-size: 50px;
+    margin: 3px;
     text-align: center;
 }
 
 .score {
     font-family: "Arial";
+    font-size: 30px;
     text-align: center;
 }
