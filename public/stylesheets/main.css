@@ -1,0 +1,46 @@
+h1 {
+    color: #8A0808;
+    font-family: "Arial";
+}
+
+p {
+    font-family: "Arial";
+}
+
+.gamecontroller {
+    font-family: "Arial";
+}
+
+.game {
+
+}
+
+.won {
+
+}
+
+.lost {
+
+}
+
+.intro {
+
+}
+
+.grid {
+
+}
+
+.tile {
+    border-style: outset;
+    border-width: 0.05em;
+    background-color: red;
+    border-color: black;
+    width: 1.2em;
+    height: 1.2em;
+    margin:0.1em;
+}
+
+.score {
+
+}
