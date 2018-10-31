@@ -3,42 +3,40 @@
 @player = @{ "Lucas/Bilal" }
 
 @main("2048") {
-    <div class="gamecontainer">
-        <div class="game">
-            @{ de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(0, input), Math.random(), Math.random()) }
+    <div class="game">
+        @{ de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(0, input), Math.random(), Math.random()) }
 
-            @if(game.win) {
-                <div class="won">
-                    "You won!"
-                </div>
-            } else if(game.lose) {
-                <div class="lost">
-                    "You lost!"
-                </div>
-            } else {
-                <div class="intro">
-                    @{ "Hello " + player + "." }
-                    @{ "Used W A S D to move and R to reset and T to exit and Z to save and U to load and Q to undo." }
-                </div>
+        @if(game.win) {
+            <div class="won">
+                @{ "GAME WON!" }
+            </div>f
+        } else if(game.lose) {
+            <div class="lost">
+                @{ "GAME OVER!" }
+            </div>
+        } else {
+            <div class="intro">
+                @{ "Hello " + player + "." }
+                @{ "Used W A S D to move and R to reset and T to exit and Z to save and U to load and Q to undo." }
+            </div>
 
-                <br>
+            <br>
 
-                @for(i <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
-                    <div class="grid">
-                        @for(j <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
-                            <span class="tile">
-                                @{ game.grid.getSingleLine(i)(j) }
-                            </span>
-                        }
-                    </div>
-                }
-
-                <br>
-
-                <div class="score">
-                    @{ "Your Score: " + game.score.toString }
+            @for(i <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
+                <div class="grid">
+                    @for(j <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
+                        <span class="tile">
+                            @{ game.grid.getSingleLine(i)(j) }
+                        </span>
+                    }
                 </div>
             }
-        </div>
+
+            <br>
+
+            <div class="score">
+                @{ "Score: " + game.score.toString }
+            </div>
+        }
     </div>
 }

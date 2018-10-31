@@ -1,46 +1,49 @@
 h1 {
     color: #8A0808;
     font-family: "Arial";
+    text-align: center;
 }
 
 p {
     font-family: "Arial";
 }
 
-.gamecontroller {
+.game {
     font-family: "Arial";
 }
 
-.game {
-
-}
-
 .won {
-
+    font-family: "Arial";
+    color: green;
+    text-align: center;
+    background-color: black;
 }
 
 .lost {
-
+    font-family: "Arial";
+    color: red;
+    text-align: center;
+    background-color: black;
 }
 
 .intro {
-
+    font-family: "Arial";
+    text-align: center;
 }
 
 .grid {
-
+    font-family: "Arial";
+    text-align: center;
 }
 
 .tile {
-    border-style: outset;
-    border-width: 0.05em;
+    font-family: "Arial";
+    border: 1px solid black;
     background-color: red;
     border-color: black;
-    width: 1.2em;
-    height: 1.2em;
-    margin:0.1em;
 }
 
 .score {
-
+    font-family: "Arial";
+    text-align: center;
 }
