@@ -1,15 +1,10 @@
 body {
-    background-color: gray;
     font-family: "Arial";
 }
 
 h1 {
     color: #8A0808;
     text-align: center;
-}
-
-p {
-
 }
 
 .game {
