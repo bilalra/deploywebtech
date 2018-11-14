@@ -1,37 +1,33 @@
 body {
     background-color: gray;
+    font-family: "Arial";
 }
 
 h1 {
     color: #8A0808;
-    font-family: "Arial";
     text-align: center;
 }
 
 p {
-    font-family: "Arial";
 }
 
 .game {
-    font-family: "Arial";
+        text-align: center;
 }
 
 .won {
-    font-family: "Arial";
     color: green;
     text-align: center;
     font-size: 140px;
 }
 
 .lost {
-    font-family: "Arial";
     color: red;
     text-align: center;
     font-size: 140px;
 }
 
 .intro {
-    font-family: "Arial";
     font-size: 20px;
     text-align: center;
 }
@@ -41,12 +37,11 @@ p {
 }
 
 .row {
-
+        text-align: center;
 }
 
 .tile {
     display: inline-block;
-    font-family: "Arial";
     border-style: outset;
     border-width: 1px;
     border-color: black;
@@ -59,7 +54,6 @@ p {
 }
 
 .score {
-    font-family: "Arial";
     font-size: 30px;
     text-align: center;
 }
