@@ -9,10 +9,11 @@ h1 {
 }
 
 p {
+
 }
 
 .game {
-        text-align: center;
+    text-align: center;
 }
 
 .won {
@@ -37,7 +38,7 @@ p {
 }
 
 .row {
-        text-align: center;
+    text-align: center;
 }
 
 .tile {
