@@ -25,7 +25,7 @@
             <div class="grid">
                 <div>
                     @for(i <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
-                        <div class="row">
+                        <div>
                             @for(j <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
                                 <span class="tile">
                                     @{ game.grid.getSingleLine(i)(j) }
