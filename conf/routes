@@ -1,5 +1,5 @@
 GET     /                           controllers.HomeController.index
-GET     /new                        controllers.HomeController.newGame
+GET     /game                       controllers.HomeController.start
 GET     /toJson                     controllers.HomeController.gameToJson
 GET     /up                         controllers.HomeController.up
 GET     /down                       controllers.HomeController.down

@@ -1,13 +1,33 @@
-//{"win":false,"lose":false,"score":{"value":4},"grid":{"random1":0.8428385304209037,"random2":0.1854348155911838,"random3":0.13083804045657776,"random4":0.794336226046478,"tiles":[{"value":0},{"value":4},{"value":0},{"value":0},{"value":0},{"value":2},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0},{"value":0}]}}
-
-
 function draw() {
 
 }
 
 function evaluate(json) {
-    if(json.)
-    $("#content").html(json)
+    if (json.win) {
+        $("#content").html("<div class='won'>GAME WON!</div>")
+    } else if (json.lose) {
+        $("#content").html("<div class='lose'>GAME OVER!</div>")
+    } else {
+        var intro = "<div class='intro'>Hello Player.</div>"
+        var tiles = json.grid.tiles
+        var grid = "<div class='grid'><div>"
+        for (i = 0; i < Math.sqrt(tiles.length); i++) {
+            grid = grid + "<div>"
+            for (j = 0; j < Math.sqrt(tiles.length); j++) {
+                grid = grid + "<span class='tile'>" +
+                    tiles[Math.sqrt(tiles.length) * i + j].value +
+                    "</span>"
+            }
+            grid = grid + "</div>"
+        }
+        grid = grid + "</div>"
+
+        var score = "<div class='score'>Score: " + json.score.value + "</div>"
+
+        var html = intro + grid + score
+
+        $("#content").html(html)
+    }
 }
 
 function turn(action) {
@@ -23,12 +43,24 @@ function turn(action) {
 }
 
 function clickListener() {
-    $("#buttonUp").click(function() { turn("/up") });
-    $("#buttonDown").click(function() { turn("/down") });
-    $("#buttonLeft").click(function() { turn("/left") });
-    $("#buttonRight").click(function() { turn("/right") });
-    $("#buttonReset").click(function() { turn("/reset") });
-    $("#buttonUndo").click(function() { turn("/undo") });
+    $("#buttonUp").click(function () {
+        turn("/up")
+    });
+    $("#buttonDown").click(function () {
+        turn("/down")
+    });
+    $("#buttonLeft").click(function () {
+        turn("/left")
+    });
+    $("#buttonRight").click(function () {
+        turn("/right")
+    });
+    $("#buttonReset").click(function () {
+        turn("/reset")
+    });
+    $("#buttonUndo").click(function () {
+        turn("/undo")
+    });
 }
 
 function init() {
@@ -44,6 +76,6 @@ function init() {
     });
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
     init();
 });

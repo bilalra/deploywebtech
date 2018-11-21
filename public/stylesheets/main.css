@@ -19,7 +19,24 @@
     text-align: center;
 }
 
+.intro {
+    font-size: 20px;
+    text-align: center;
+}
+
 .score {
     font-size: 20px;
     text-align: center;
+}
+
+.won {
+    color: green;
+    text-align: center;
+    font-size: 140px;
+}
+
+.lost {
+    color: red;
+    text-align: center;
+    font-size: 140px;
 }
