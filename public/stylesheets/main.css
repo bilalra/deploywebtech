@@ -7,6 +7,12 @@ h1 {
     text-align: center;
 }
 
+p {
+    text-align: center;
+    margin: auto;
+    width: 90%;
+}
+
 .game {
     text-align: center;
 }
@@ -32,24 +38,24 @@ h1 {
     text-align: center;
 }
 
-.row {
-    text-align: center;
-}
-
 .tile {
     display: inline-block;
     border-style: outset;
     border-width: 1px;
     border-color: black;
-    width: 1.2em;
-    height: 1.2em;
+    width: 2.5em;
+    height: 1.7em;
     background-color: red;
-    font-size: 51px;
+    font-size: 28px;
     margin: 3px;
     text-align: center;
 }
 
 .score {
-    font-size: 30px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.button {
     text-align: center;
 }

@@ -17,21 +17,29 @@
         } else {
             <div class="intro">
                 @{ "Hello " + player + "." }
-                @{ "Used W A S D to move and R to reset and T to exit and Z to save and U to load and Q to undo." }
             </div>
 
             <br>
 
             <div class="grid">
-                @for(i <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
-                    <div class="row">
-                        @for(j <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
-                            <span class="tile">
-                                @{ game.grid.getSingleLine(i)(j) }
-                            </span>
-                        }
-                    </div>
-                }
+                <div>
+                    @for(i <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
+                        <div>
+                            @for(j <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
+                                <span class="tile">
+                                    @{
+                                        val tile = game.grid.getSingleLine(i)(j).toString()
+                                        if(tile == "0") {
+                                            "-"
+                                        } else {
+                                            tile
+                                        }
+                                    }
+                                </span>
+                            }
+                        </div>
+                    }
+                </div>
             </div>
 
             <br>
@@ -40,13 +48,15 @@
                 @{ "Score: " + game.score.toString }
             </div>
 
-            <div class="buttons">
-                <div><a class="btn btn-primary btn-lg" href="w" role="button">UP</a></div>
+            <br>
+
+            <div>
+                <div><a class="btn btn-primary btn-lg" href="w" role="button" style="height:50px;width:100px">UP</a></div>
                 <div>
-                    <a class="btn btn-primary btn-lg" href="a" role="button">LEFT</a>
-                    <a class="btn btn-primary btn-lg" href="d" role="button">RIGHT</a>
+                    <a class="btn btn-primary btn-lg" href="a" role="button" style="height:50px;width:100px">LEFT</a>
+                    <a class="btn btn-primary btn-lg" href="d" role="button" style="height:50px;width:100px">RIGHT</a>
                 </div>
-                <div><a class="btn btn-primary btn-lg" href="s" role="button">DOWN</a></div>
+                <div><a class="btn btn-primary btn-lg" href="s" role="button" style="height:50px;width:100px">DOWN</a></div>
             </div>
         }
     </div>
