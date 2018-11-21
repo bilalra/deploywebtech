@@ -1,21 +1,4 @@
-.game {
-    text-align: center;
-}
-
-.won {
-    color: green;
-    text-align: center;
-    font-size: 140px;
-}
-
-.lost {
-    color: red;
-    text-align: center;
-    font-size: 140px;
-}
-
-.intro {
-    font-size: 20px;
+.buttons {
     text-align: center;
 }
 
