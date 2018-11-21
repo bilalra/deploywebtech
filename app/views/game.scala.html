@@ -28,7 +28,14 @@
                         <div>
                             @for(j <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
                                 <span class="tile">
-                                    @{ game.grid.getSingleLine(i)(j) }
+                                    @{
+                                        val tile = game.grid.getSingleLine(i)(j).toString()
+                                        if(tile == "0") {
+                                            "-"
+                                        } else {
+                                            tile
+                                        }
+                                    }
                                 </span>
                             }
                         </div>
