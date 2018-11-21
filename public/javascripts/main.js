@@ -1,5 +1,27 @@
-function draw() {
+function draw(json) {
+    var intro = "<div class='intro'>Hello Player.</div>"
+    var tiles = json.grid.tiles
+    var grid = "<div class='grid'><div>"
+    for (i = 0; i < Math.sqrt(tiles.length); i++) {
+        grid = grid + "<div>"
+        for (j = 0; j < Math.sqrt(tiles.length); j++) {
+            var tile = tiles[Math.sqrt(tiles.length) * i + j].value
 
+            if(tile == 0) {
+                tile = "-"
+            }
+            grid = grid + "<span class='tile'>" + tile + "</span>"
+        }
+        grid = grid + "</div>"
+    }
+    grid = grid + "</div>"
+
+    var score = "<div class='score'>Score: " + json.score.value + "</div>"
+
+    var html = intro + "<br>" + grid + "<br>" + score
+
+    $("#content").html(html)
+    $("#buttons").show()
 }
 
 function evaluate(json) {
@@ -10,26 +32,7 @@ function evaluate(json) {
         $("#content").html("<div class='lose'>GAME OVER!</div>")
         $("#buttons").hide()
     } else {
-        var intro = "<div class='intro'>Hello Player.</div>"
-        var tiles = json.grid.tiles
-        var grid = "<div class='grid'><div>"
-        for (i = 0; i < Math.sqrt(tiles.length); i++) {
-            grid = grid + "<div>"
-            for (j = 0; j < Math.sqrt(tiles.length); j++) {
-                grid = grid + "<span class='tile'>" +
-                    tiles[Math.sqrt(tiles.length) * i + j].value +
-                    "</span>"
-            }
-            grid = grid + "</div>"
-        }
-        grid = grid + "</div>"
-
-        var score = "<div class='score'>Score: " + json.score.value + "</div>"
-
-        var html = intro + grid + score
-
-        $("#content").html(html)
-        $("#buttons").show()
+        draw(json)
     }
 }
 
