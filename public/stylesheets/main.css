@@ -7,6 +7,12 @@ h1 {
     text-align: center;
 }
 
+p {
+    text-align: center;
+    margin: auto;
+    width: 90%;
+}
+
 .game {
     text-align: center;
 }
@@ -47,5 +53,9 @@ h1 {
 
 .score {
     font-size: 20px;
+    text-align: center;
+}
+
+.button {
     text-align: center;
 }
