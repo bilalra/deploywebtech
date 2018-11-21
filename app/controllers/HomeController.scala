@@ -15,9 +15,11 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def newGame() = Action {
-    de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(81, 'q'), Math.random(), Math.random())
-
     Ok(views.html.game())
+  }
+
+  def gameToJson() = Action {
+    Ok(gson.toJson(game))
   }
 
   def up() = Action {
