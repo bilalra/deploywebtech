@@ -1,63 +1,25 @@
-@(game: de.htwg.se.twothousandfortyeight.model.gameModel.gameBaseImpl.Game, input: Char)
-
-@player = @{ "Lucas/Bilal" }
-
 @main("2048") {
-    <div class="game">
-        @{ de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(0, input), Math.random(), Math.random()) }
+    <div class="content">
 
-        @if(game.win) {
-            <div class="won">
-                @{ "GAME WON!" }
-            </div>
-        } else if(game.lose) {
-            <div class="lost">
-                @{ "GAME OVER!" }
-            </div>
-        } else {
-            <div class="intro">
-                @{ "Hello " + player + "." }
-            </div>
+    </div>
 
-            <br>
+    <div class="buttons">
+        <div><a class="btn btn-primary btn-lg" id="buttonUp" role="button" style="height: 50px;
+            width: 100px">UP</a></div>
+        <div>
+            <a class="btn btn-primary btn-lg" id="buttonLeft" role="button" style="height: 50px;
+                width: 100px">LEFT</a>
+            <a class="btn btn-primary btn-lg" id="buttonRight" role="button" style="height: 50px;
+                width: 100px">RIGHT</a>
+        </div>
+        <div><a class="btn btn-primary btn-lg" id="buttonDown" role="button" style="height: 50px;
+            width: 100px">DOWN</a></div>
 
-            <div class="grid">
-                <div>
-                    @for(i <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
-                        <div>
-                            @for(j <- 0 until de.htwg.se.twothousandfortyeight.TwoThousandFortyEight.FIELD_SIZE) {
-                                <span class="tile">
-                                    @{
-                                        val tile = game.grid.getSingleLine(i)(j).toString()
-                                        if(tile == "0") {
-                                            "-"
-                                        } else {
-                                            tile
-                                        }
-                                    }
-                                </span>
-                            }
-                        </div>
-                    }
-                </div>
-            </div>
-
-            <br>
-
-            <div class="score">
-                @{ "Score: " + game.score.toString }
-            </div>
-
-            <br>
-
-            <div>
-                <div><a class="btn btn-primary btn-lg" href="w" role="button" style="height:50px;width:100px">UP</a></div>
-                <div>
-                    <a class="btn btn-primary btn-lg" href="a" role="button" style="height:50px;width:100px">LEFT</a>
-                    <a class="btn btn-primary btn-lg" href="d" role="button" style="height:50px;width:100px">RIGHT</a>
-                </div>
-                <div><a class="btn btn-primary btn-lg" href="s" role="button" style="height:50px;width:100px">DOWN</a></div>
-            </div>
-        }
+        <div>
+            <div><a class="btn btn-primary btn-lg" id="buttonUndo" role="button" style="height: 50px;
+            width: 100px">UNDO</a></div>
+            <div><a class="btn btn-primary btn-lg" id="buttonReset" role="button" style="height: 50px;
+            width: 100px">RESET</a></div>
+        </div>
     </div>
 }
