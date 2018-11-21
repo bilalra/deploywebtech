@@ -40,12 +40,12 @@ h1 {
     width: 2.5em;
     height: 1.7em;
     background-color: red;
-    font-size: 40px;
+    font-size: 28px;
     margin: 3px;
     text-align: center;
 }
 
 .score {
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
 }
