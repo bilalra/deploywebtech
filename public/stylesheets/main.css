@@ -29,6 +29,8 @@ h1 {
 }
 
 .grid {
+    width: 22%;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -41,10 +43,10 @@ h1 {
     border-style: outset;
     border-width: 1px;
     border-color: black;
-    width: 1.2em;
-    height: 1.2em;
+    width: 1.5em;
+    height: 1.5em;
     background-color: red;
-    font-size: 51px;
+    font-size: 50px;
     margin: 3px;
     text-align: center;
 }
