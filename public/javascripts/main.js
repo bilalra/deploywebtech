@@ -4,9 +4,11 @@ function draw() {
 
 function evaluate(json) {
     if (json.win) {
-        $("#content").html("<div class='won'>GAME WON!</div>")
+        $("#content").html("<div class='win'>GAME WON!</div>")
+        $("#buttons").hide()
     } else if (json.lose) {
         $("#content").html("<div class='lose'>GAME OVER!</div>")
+        $("#buttons").hide()
     } else {
         var intro = "<div class='intro'>Hello Player.</div>"
         var tiles = json.grid.tiles
@@ -27,6 +29,7 @@ function evaluate(json) {
         var html = intro + grid + score
 
         $("#content").html(html)
+        $("#buttons").show()
     }
 }
 

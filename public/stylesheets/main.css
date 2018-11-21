@@ -29,13 +29,13 @@
     text-align: center;
 }
 
-.won {
+.win {
     color: green;
     text-align: center;
     font-size: 140px;
 }
 
-.lost {
+.lose {
     color: red;
     text-align: center;
     font-size: 140px;
