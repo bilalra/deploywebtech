@@ -100,13 +100,13 @@ function webSocket() {
 
     websocket.onmessage = function (result) {
         console.log('Got a message!')
-        evaluate(result.data)
+        evaluate(JSON.parse(result.data))
         clickListener()
     };
 }
 
 $(document).ready(function () {
     console.log("Document is ready!");
-    ajax();
+    //ajax();
     webSocket();
 });

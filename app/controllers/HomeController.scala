@@ -84,12 +84,7 @@ class HomeController @Inject()(cc: ControllerComponents)(implicit system: ActorS
   class WebSocketActor(out: ActorRef) extends Actor with Reactor {
     listenTo(turn)
 
-    def receive = {
-      case msg: String => {
-        out ! (gson.toJson(game))
-        println("Sent Json to Client" + msg)
-      }
-    }
+    out ! (gson.toJson(game))
 
     reactions += {
       case event: TurnMade => sendJsonToClient
@@ -99,6 +94,12 @@ class HomeController @Inject()(cc: ControllerComponents)(implicit system: ActorS
       println("Received event from Controller")
       out ! (gson.toJson(game))
       println("Sent Json to Client")
+    }
+
+    def receive = {
+      case msg: String => {
+        println("Got message from Client: " + msg)
+      }
     }
   }
 }
