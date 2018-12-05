@@ -21,7 +21,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def start() = Action {
-    turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(82, 'r'), Math.random(), Math.random())
+    turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey('r'), Math.random(), Math.random())
 
     Ok(views.html.game())
   }
