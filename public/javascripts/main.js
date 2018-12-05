@@ -82,7 +82,7 @@ function ajax() {
     });
 }
 
-// TODO: FIX DOUBLE EVALUATE
+// TODO: Fix WebSocket, it double evaluates everything...
 function webSocket() {
     var websocket = new WebSocket("ws://localhost:9000/toJsonWebSocket");
     websocket.setTimeout
@@ -108,6 +108,6 @@ function webSocket() {
 
 $(document).ready(function () {
     console.log("Document is ready!");
-    //ajax();
-    webSocket();
+    ajax();
+    //webSocket();
 });
