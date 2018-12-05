@@ -82,6 +82,7 @@ function ajax() {
     });
 }
 
+// TODO: FIX DOUBLE EVALUATE
 function webSocket() {
     var websocket = new WebSocket("ws://localhost:9000/toJsonWebSocket");
     websocket.setTimeout
