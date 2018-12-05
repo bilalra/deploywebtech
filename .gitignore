@@ -8,4 +8,3 @@ target
 /RUNNING_PID
 *.json
 *.xml
-node_modules
