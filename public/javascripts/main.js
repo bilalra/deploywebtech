@@ -82,13 +82,13 @@ function ajax() {
     });
 }
 
-// TODO: Fix WebSocket, it double evaluates everything...
 function webSocket() {
     var websocket = new WebSocket("ws://localhost:9000/toJsonWebSocket");
     websocket.setTimeout
 
     websocket.onopen = function (event) {
         console.log("Connected to Websocket");
+        clickListener()
     }
 
     websocket.onclose = function () {
@@ -102,12 +102,11 @@ function webSocket() {
     websocket.onmessage = function (result) {
         console.log('Got a message!')
         evaluate(JSON.parse(result.data))
-        clickListener()
     };
 }
 
 $(document).ready(function () {
     console.log("Document is ready!");
-    ajax();
-    //webSocket();
+    //ajax();
+    webSocket();
 });
