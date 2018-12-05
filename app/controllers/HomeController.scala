@@ -28,42 +28,42 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(gson.toJson(game))
   }
 
-  // TODO: Finish this mess
-  def gameToJsonWebSocket() = WebSocket.accept[String, String] {
-    request {
-      ActorFlow.actorRef { out =>
-        println("Connect received")
-        WebSocketActorFactory.create(out)
-      }
-    }
-
-    object WebSocketActorFactory {
-      def create(out: ActorRef) = {
-        Props(new WebSocketActor(out))
-      }
-    }
-
-    class WebSocketActor(out: ActorRef) extends Actor with Reactor {
-      listenTo(gameController)
-
-      def receive = {
-        case msg: String =>
-          out ! (gameController.toJson.toString)
-          println("Sent Json to Client" + msg)
-      }
-
-      reactions += {
-        case event: GridSizeChanged => sendJsonToClient
-        case event: CellChanged => sendJsonToClient
-        case event: CandidatesChanged => sendJsonToClient
-      }
-
-      def sendJsonToClient = {
-        println("Received event from Controller")
-        out ! (gameController.toJson.toString)
-      }
-    }
-  }
+//  // TODO: Finish this mess
+//  def gameToJsonWebSocket() = WebSocket.accept[String, String] {
+//    request {
+//      ActorFlow.actorRef { out =>
+//        println("Connect received")
+//        WebSocketActorFactory.create(out)
+//      }
+//    }
+//
+//    object WebSocketActorFactory {
+//      def create(out: ActorRef) = {
+//        Props(new WebSocketActor(out))
+//      }
+//    }
+//
+//    class WebSocketActor(out: ActorRef) extends Actor with Reactor {
+//      listenTo(gameController)
+//
+//      def receive = {
+//        case msg: String =>
+//          out ! (gameController.toJson.toString)
+//          println("Sent Json to Client" + msg)
+//      }
+//
+//      reactions += {
+//        case event: GridSizeChanged => sendJsonToClient
+//        case event: CellChanged => sendJsonToClient
+//        case event: CandidatesChanged => sendJsonToClient
+//      }
+//
+//      def sendJsonToClient = {
+//        println("Received event from Controller")
+//        out ! (gameController.toJson.toString)
+//      }
+//    }
+//  }
 
   def up() = Action {
     de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(87, 'w'), Math.random(), Math.random())
