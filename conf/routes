@@ -1,7 +1,7 @@
 GET        /                       controllers.HomeController.index
 GET        /game                   controllers.HomeController.start
 GET        /toJsonAjax             controllers.HomeController.gameToJsonAjax
-#GET        /toJsonWebSocket        controllers.HomeController.gameToJsonWebSocket
+GET        /toJsonWebSocket        controllers.HomeController.gameToJsonWebSocket
 GET        /up                     controllers.HomeController.up
 GET        /down                   controllers.HomeController.down
 GET        /left                   controllers.HomeController.left
