@@ -1,7 +1,10 @@
 package controllers
 
-import akka.actor.{Actor, ActorRef, Props}
+import akka.actor.{Actor, ActorRef, ActorSystem, Props}
+import akka.stream.Materializer
 import com.google.gson.Gson
+import de.htwg.se.twothousandfortyeight.controller.turnBaseImpl.Turn
+import de.htwg.se.twothousandfortyeight.controller.TurnMade
 import de.htwg.se.twothousandfortyeight.model.gameModel.gameBaseImpl.Game
 import javax.inject._
 import play.api.libs.streams.ActorFlow
@@ -10,8 +13,9 @@ import play.api.mvc._
 import scala.swing.Reactor
 
 @Singleton
-class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class HomeController @Inject()(cc: ControllerComponents)(implicit system: ActorSystem, mat: Materializer) extends AbstractController(cc) {
   val game = new Game
+  val turn = new Turn
   val gson = new Gson
 
   def index() = Action {
@@ -19,85 +23,82 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def start() = Action {
-    de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(82, 'r'), Math.random(), Math.random())
+    turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey('r'), Math.random(), Math.random())
 
     Ok(views.html.game())
+  }
+
+  def up() = Action {
+    turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey('w'), Math.random(), Math.random())
+
+    Ok(gson.toJson(game))
+  }
+
+  def down() = Action {
+    turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey('s'), Math.random(), Math.random())
+
+    Ok(gson.toJson(game))
+  }
+
+  def left() = Action {
+    turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey('a'), Math.random(), Math.random())
+
+    Ok(gson.toJson(game))
+  }
+
+  def right() = Action {
+    turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey('d'), Math.random(), Math.random())
+
+    Ok(gson.toJson(game))
+  }
+
+  def reset() = Action {
+    turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey('r'), Math.random(), Math.random())
+
+    Ok(gson.toJson(game))
+  }
+
+  def undo() = Action {
+    turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey('q'), Math.random(), Math.random())
+
+    Ok(gson.toJson(game))
   }
 
   def gameToJsonAjax() = Action {
     Ok(gson.toJson(game))
   }
 
-//  // TODO: Finish this mess
-//  def gameToJsonWebSocket() = WebSocket.accept[String, String] {
-//    request {
-//      ActorFlow.actorRef { out =>
-//        println("Connect received")
-//        WebSocketActorFactory.create(out)
-//      }
-//    }
-//
-//    object WebSocketActorFactory {
-//      def create(out: ActorRef) = {
-//        Props(new WebSocketActor(out))
-//      }
-//    }
-//
-//    class WebSocketActor(out: ActorRef) extends Actor with Reactor {
-//      listenTo(gameController)
-//
-//      def receive = {
-//        case msg: String =>
-//          out ! (gameController.toJson.toString)
-//          println("Sent Json to Client" + msg)
-//      }
-//
-//      reactions += {
-//        case event: GridSizeChanged => sendJsonToClient
-//        case event: CellChanged => sendJsonToClient
-//        case event: CandidatesChanged => sendJsonToClient
-//      }
-//
-//      def sendJsonToClient = {
-//        println("Received event from Controller")
-//        out ! (gameController.toJson.toString)
-//      }
-//    }
-//  }
-
-  def up() = Action {
-    de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(87, 'w'), Math.random(), Math.random())
-
-    Ok(gson.toJson(game))
+  def gameToJsonWebSocket() = WebSocket.accept[String, String] { request =>
+    ActorFlow.actorRef { out =>
+      println("Connect received")
+      WebSocketActorFactory.create(out)
+    }
   }
 
-  def down() = Action {
-    de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(83, 's'), Math.random(), Math.random())
-
-    Ok(gson.toJson(game))
+  object WebSocketActorFactory {
+    def create(out: ActorRef) = {
+      Props(new WebSocketActor(out))
+    }
   }
 
-  def left() = Action {
-    de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(65, 'a'), Math.random(), Math.random())
+  class WebSocketActor(out: ActorRef) extends Actor with Reactor {
+    listenTo(turn)
 
-    Ok(gson.toJson(game))
-  }
+    def receive = {
+      case msg: String => {
+        out ! (gson.toJson(game))
+        println("Sent Json to Client" + msg)
+      }
+    }
 
-  def right() = Action {
-    de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(68, 'd'), Math.random(), Math.random())
+    reactions += {
+      case event: TurnMade => sendJsonToClient
+    }
 
-    Ok(gson.toJson(game))
-  }
-
-  def reset() = Action {
-    de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(82, 'r'), Math.random(), Math.random())
-
-    Ok(gson.toJson(game))
-  }
-
-  def undo() = Action {
-    de.htwg.se.twothousandfortyeight.controller.Turn.makeTurn(game, de.htwg.se.twothousandfortyeight.util.Utils.processKey(81, 'q'), Math.random(), Math.random())
-
-    Ok(gson.toJson(game))
+    def sendJsonToClient = {
+      println("Received event from Controller")
+      out ! (gson.toJson(game))
+      println("Sent Json to Client")
+    }
   }
 }

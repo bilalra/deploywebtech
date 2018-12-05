@@ -82,35 +82,31 @@ function ajax() {
     });
 }
 
-// // TODO: Finish this mess
-// function webSocket() {
-//     var websocket = new WebSocket("ws://localhost:9000/websocket");
-//     websocket.setTimeout
-//
-//     websocket.onopen = function (event) {
-//         console.log("Connected to Websocket");
-//     }
-//
-//     websocket.onclose = function () {
-//         console.log('Connection with Websocket Closed!');
-//     };
-//
-//     websocket.onerror = function (error) {
-//         console.log('Error in Websocket Occured: ' + error);
-//     };
-//
-//     websocket.onmessage = function (e) {
-//         if (typeof e.data === "string") {
-//             var json = JSON.parse(e.data);
-//             var cells = json.grid.cells;
-//             grid.fill(cells);
-//             updateGrid(grid);
-//             registerClickListener();
-//         }
-//     };
-// }
+function webSocket() {
+    var websocket = new WebSocket("ws://localhost:9000/toJsonWebSocket");
+    websocket.setTimeout
+
+    websocket.onopen = function (event) {
+        console.log("Connected to Websocket");
+    }
+
+    websocket.onclose = function () {
+        console.log('Connection with Websocket Closed!');
+    };
+
+    websocket.onerror = function (error) {
+        console.log('Error in Websocket Occured: ' + error);
+    };
+
+    websocket.onmessage = function (result) {
+        console.log('Got a message!')
+        evaluate(result.data)
+        clickListener()
+    };
+}
 
 $(document).ready(function () {
+    console.log("Document is ready!");
     ajax();
-    // webSocket();
+    webSocket();
 });
