@@ -6,7 +6,6 @@ function draw(json) {
         for (j = 0; j < Math.sqrt(tiles.length); j++) {
             var tile = tiles[Math.sqrt(tiles.length) * i + j].value
 
-
             grid = grid + "<tile-component value=" + tile + "></tile-component>"
         }
         grid = grid + "</div>"
@@ -34,15 +33,17 @@ function evaluate(json) {
 }
 
 function turn(action) {
-    $.ajax({
-        method: "GET",
-        url: action,
-        dataType: "json",
+    if (action != null) {
+        $.ajax({
+            method: "GET",
+            url: action,
+            dataType: "json",
 
-        success: function (result) {
-            evaluate(result)
-        }
-    });
+            success: function (result) {
+                evaluate(result)
+            }
+        });
+    }
 }
 
 function clickListener() {
