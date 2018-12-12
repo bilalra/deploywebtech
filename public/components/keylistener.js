@@ -2,8 +2,6 @@ let app = new Vue({
     methods: {
         handleGlobalKeyDown(e) {
             turn(processKey(e.keyCode))
-            console.log(e)
-            console.log(e.keyCode)
         }
     }
 });
