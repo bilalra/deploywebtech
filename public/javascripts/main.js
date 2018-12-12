@@ -6,9 +6,7 @@ function draw(json) {
         for (j = 0; j < Math.sqrt(tiles.length); j++) {
             var tile = tiles[Math.sqrt(tiles.length) * i + j].value
 
-            if(tile == 0) {
-                tile = "-"
-            }
+
             grid = grid + "<tile-component value=" + tile + "></tile-component>"
         }
         grid = grid + "</div>"
