@@ -48,23 +48,25 @@ class Tile extends LitElement {
             return html`<style>.tile {
           display: inline-block;
           width: 2.5em;
-          height: 2em;
+          height: 2.5em;
           font-size: 28px;
           margin: 3px;
           text-align: center;
           color: ${this.getBackgroundColor()};
           background-color: ${this.getBackgroundColor()};
+          border-radius: 8px;
         }</style>
         <span class='tile'>${this.value}</span>`;
         } else {
             return html`<style>.tile {
           display: inline-block;
           width: 2.5em;
-          height: 2em;
+          height: 2.5em;
           font-size: 28px;
           margin: 3px;
           text-align: center;
           background-color: ${this.getBackgroundColor()};
+          border-radius: 8px;
         }</style>
         <span class='tile'>${this.value}</span>`;
         }
