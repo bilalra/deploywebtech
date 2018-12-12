@@ -14,35 +14,6 @@ class Tile extends LitElement {
         super();
     }
 
-    getBackgroundColor() {
-        switch (this.value) {
-            case 2:
-                return "#FFF835";
-            case 4:
-                return "#AED100";
-            case 8:
-                return "#7DD100";
-            case 16:
-                return "#50D100";
-            case 32:
-                return "#00D1A0";
-            case 64:
-                return "#005AD1";
-            case 128:
-                return "#4C00D1";
-            case 256:
-                return "#B500D1";
-            case 512:
-                return "#D10099";
-            case 1024:
-                return "#D1005E";
-            case 2048:
-                return "#D10000";
-            default:
-                return "#707070";
-        }
-    }
-
     render() {
         if (this.value == 0) {
             return html`<style>.tile {
@@ -69,6 +40,35 @@ class Tile extends LitElement {
           border-radius: 8px;
         }</style>
         <span class='tile'>${this.value}</span>`;
+        }
+    }
+
+    getBackgroundColor() {
+        switch (this.value) {
+            case 2:
+                return "#FFF835";
+            case 4:
+                return "#AED100";
+            case 8:
+                return "#7DD100";
+            case 16:
+                return "#50D100";
+            case 32:
+                return "#00D1A0";
+            case 64:
+                return "#005AD1";
+            case 128:
+                return "#4C00D1";
+            case 256:
+                return "#B500D1";
+            case 512:
+                return "#D10099";
+            case 1024:
+                return "#D1005E";
+            case 2048:
+                return "#D10000";
+            default:
+                return "#707070";
         }
     }
 }
