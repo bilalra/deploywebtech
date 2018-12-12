@@ -7,23 +7,6 @@
     color: #776e65e6
 }
 
-/*.tile {*/
-/*display: inline-block;*/
-/*border-style: outset;*/
-/*border-width: 1px;*/
-/*border-color: black;*/
-/*width: 2.5em;*/
-/*height: 1.7em;*/
-/*font-size: 28px;*/
-/*margin: 3px;*/
-/*text-align: center;*/
-/*}*/
-
-.intro {
-    font-size: 20px;
-    text-align: center;
-}
-
 .score {
     font-size: 20px;
     text-align: center;

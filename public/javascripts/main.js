@@ -1,5 +1,4 @@
 function draw(json) {
-    var intro = "<div class='intro'>Hello Player.</div>"
     var tiles = json.grid.tiles
     var grid = "<div class='grid'><div>"
     for (i = 0; i < Math.sqrt(tiles.length); i++) {
@@ -10,8 +9,7 @@ function draw(json) {
             if(tile == 0) {
                 tile = "-"
             }
-            //grid = grid + "<div class='tile'>" + tile + "</div>"
-            grid = grid + "<tile value=tile></tile>"
+            grid = grid + "<tile-component value=" + tile + "></tile-component>"
         }
         grid = grid + "</div>"
     }
@@ -19,7 +17,7 @@ function draw(json) {
 
     var score = "<div class='score'>Score: " + json.score.value + "</div>"
 
-    var html = intro + "<br>" + grid + "<br>" + score
+    var html = grid + "<br>" + score
 
     $("#content").html(html)
     $("#buttons").show()
