@@ -17,16 +17,16 @@ function draw(json) {
     var html = grid + "<br>" + score
 
     $("#content").html(html)
-    $("#buttons").show()
+    $("#buttonsMove").show()
 }
 
 function evaluate(json) {
     if (json.win) {
         $("#content").html("<div class='win'>GAME WON!</div>")
-        $("#buttons").hide()
+        $("#buttonsMove").hide()
     } else if (json.lose) {
         $("#content").html("<div class='lose'>GAME OVER!</div>")
-        $("#buttons").hide()
+        $("#buttonsMove").hide()
     } else {
         draw(json)
     }
