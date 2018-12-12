@@ -10,7 +10,7 @@ function draw(json) {
             if(tile == 0) {
                 tile = "-"
             }
-            grid = grid + "<span class='tile'>" + tile + "</span>"
+            grid = grid + "<div class='tile'>" + tile + "</div>"
         }
         grid = grid + "</div>"
     }
